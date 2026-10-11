@@ -23,11 +23,10 @@
 
 ## Review Focus
 
-- A malicious winner contract must not block other winners: settlement records claimable balances and never pushes prizes.
 - A round with no winning bets must preserve its pot as rollover rather than lock or destroy funds.
-- Settlement after the target block expires must fail with an explicit recovery path rather than derive randomness from a zero block hash.
 - A wallet on the wrong chain or with no authorized account must receive a clear frontend state and no transaction attempt.
 - Long addresses, URLs, and references in the Word report must wrap without clipping and must remain black.
+- The report and README must identify the pseudo-random draw as an educational simplification unsuitable for real-money use.
 
 ---
 
@@ -44,24 +43,23 @@
 
 - [ ] **Step 1: Write failing constructor and betting tests** asserting valid initialization, `maxBets` range 2-100, number range 1-10, minimum stake, one bet per address per round, pot/count updates, and closure at the configured count.
 - [ ] **Step 2: Run `pnpm hardhat test test/Casino.betting.ts`** and confirm failure because `Casino.sol` is absent.
-- [ ] **Step 3: Implement the minimal contract state, custom errors, events, constructor, and `placeBet(uint8)`**; set `drawBlock = block.number + 2` when the final bet closes the round.
+- [ ] **Step 3: Implement the minimal contract state, custom errors, events, constructor, and `placeBet(uint8)`**; close the round when the final required bet is accepted.
 - [ ] **Step 4: Run `pnpm hardhat test test/Casino.betting.ts` and `pnpm hardhat compile`**; expect all betting tests to pass and compilation to report success.
 - [ ] **Step 5: Commit** with `feat: add casino betting rules`.
 
-### Task 2: Settlement, Rollover, and Pull Payments
+### Task 2: Classroom Settlement and Prize Claims
 
 **Files:**
 - Modify: `assignment-02-casino-dapp/contracts/Casino.sol`
-- Create: `assignment-02-casino-dapp/contracts/test/RejectingWinner.sol`
 - Test: `assignment-02-casino-dapp/test/Casino.settlement.ts`
 
 **Interfaces:**
-- Consumes: betting state and `drawBlock` from Task 1.
-- Produces: `settleRound()`; `claimWinnings()`; `recoverExpiredRound()`; getters `claimable(address)`, `lastWinningNumber()`, `rolloverPot()`; events `RoundSettled`, `WinningsClaimed`, `RoundRecovered`.
+- Consumes: closed-round betting state from Task 1.
+- Produces: `settleRound()`; `claimWinnings()`; getters `claimable(address)`, `lastWinningNumber()`, `rolloverPot()`; events `RoundSettled`, `WinningsClaimed`.
 
-- [ ] **Step 1: Write failing settlement tests** asserting premature rejection, winning number 1-10, equal winner credits, no-winner rollover, expired-block rejection and recovery, reentrancy-safe claim clearing, rejecting-recipient isolation, and a clean next round.
+- [ ] **Step 1: Write failing settlement tests** asserting premature rejection, winning number 1-10, equal winner credits, no-winner rollover, successful claims, and a clean next round.
 - [ ] **Step 2: Run `pnpm hardhat test test/Casino.settlement.ts`** and confirm failure on missing settlement methods.
-- [ ] **Step 3: Implement settlement and claims** using `blockhash(drawBlock)`, per-round player lists, checks-effects-interactions in `claimWinnings`, and ownerless public recovery after the 256-block blockhash window.
+- [ ] **Step 3: Implement settlement and claims** using a clearly documented educational pseudo-random hash of current block data, per-round player lists, and checks-effects-interactions in `claimWinnings`.
 - [ ] **Step 4: Run `pnpm hardhat test`**; expect every betting and settlement test to pass.
 - [ ] **Step 5: Commit** with `feat: settle casino rounds safely`.
 

@@ -1,0 +1,25 @@
+{
+  "name": "assignment-02-casino-dapp",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:local": "hardhat run scripts/deploy.ts",
+    "deploy:sepolia": "hardhat run scripts/deploy.ts --network sepolia",
+    "export:abi": "node scripts/export-abi.mjs",
+    "frontend:build": "pnpm --dir frontend build"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox-mocha-ethers": "4.0.0",
+    "@types/chai": "^5.2.3",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^24.10.0",
+    "chai": "^6.2.0",
+    "hardhat": "3.19.0",
+    "mocha": "^11.7.4",
+    "typescript": "^5.9.3"
+  }
+}
+

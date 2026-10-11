@@ -21,7 +21,7 @@ Generated dependency directories, private keys, RPC credentials, compiler caches
 
 The Casino contract will use Solidity 0.8.x and support repeated rounds. Each bet selects an integer from 1 through 10 and transfers at least the configured minimum stake. The round closes when the configured bet limit is reached; the production deployment setting will support the assignment's 100-bet target, while automated tests may use a smaller constructor value to exercise settlement efficiently.
 
-The contract will reject invalid numbers, insufficient stakes, duplicate participation in the same round, bets after a round closes, and premature settlement. A future-block settlement mechanism will derive the winning number from a block hash after betting closes. This avoids an owner-selected result and removes the obsolete Oraclize dependency, while the documentation will state clearly that the design is educational and not suitable for a real-money casino. Winners will withdraw their share through a pull-payment claim function so that one recipient cannot block settlement for everyone else. Events will expose bets, round closure, settlement, and withdrawals to the frontend.
+The contract will reject invalid numbers, insufficient stakes, duplicate participation in the same round, bets after a round closes, and premature settlement. After betting closes, any user may settle the round; the winning number will be derived from current block data as a simple teaching demonstration that removes the obsolete Oraclize dependency. The documentation will state clearly that this pseudo-random method is not suitable for a real-money casino. Winners will withdraw their recorded share through a simple claim function. Events will expose bets, settlement, and withdrawals to the frontend.
 
 ## Frontend
 
@@ -43,7 +43,7 @@ The deliverable will be a `.docx` document on US Letter pages. The cover sheet w
 
 ## Verification
 
-Contract tests will cover constructor validation, valid bets, each rejection path, round closure, delayed settlement, winning-number range, winner accounting, claims, and round reset. The frontend must pass its production build and targeted component or utility tests. Deployment configuration will be checked without exposing secrets. The Word report will be rendered to page images with the bundled document runtime; every page will be inspected for correct fonts, all-black styling, three-line tables, page breaks, clipping, overlap, and readable references. Placeholder scans will ensure only the user-controlled signature and genuinely external deployment fields remain before handoff.
+Contract tests will cover constructor validation, valid bets, the main rejection paths, round closure, settlement, winning-number range, winner accounting, claims, and round reset. The frontend must pass its production build and targeted component or utility tests. Deployment configuration will be checked without exposing secrets. The Word report will be rendered to page images with the bundled document runtime; every page will be inspected for correct fonts, all-black styling, three-line tables, page breaks, clipping, overlap, and readable references. Placeholder scans will ensure only the user-controlled signature and genuinely external deployment fields remain before handoff.
 
 ## Boundaries
 

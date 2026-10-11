@@ -1,2 +1,15 @@
 .worktrees/
 .superpowers/
+node_modules/
+artifacts/
+cache/
+types/
+coverage/
+dist/
+*.tsbuildinfo
+frontend/vite.config.js
+frontend/vite.config.d.ts
+.env
+ignition/deployments/
+.localappdata/
+**/report/qa*/
