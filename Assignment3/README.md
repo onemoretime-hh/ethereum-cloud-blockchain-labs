@@ -51,6 +51,8 @@ Use Sepolia in Remix with MetaMask. Deploy `HelloWorld.sol` with the compiler se
 
 For the storage exercise, choose compiler 0.5.1 and disable optimization, deploy a fresh `StorageTest`, then paste `put_input.json` into `put`. Record transaction gas and the selected Remix VM version.
 
+The completed Remix browser run recorded **758,369 transaction gas** and **732,557 execution gas**, matching the local Prague results. The browser terminal screenshot is included in the Word report; the measured values are saved in `artifacts/remix_storage_result.json`.
+
 ## Recorded Sepolia deployment
 
 Contract: `0xaECc1158aBA5e1A58A7d45D1c34eED30cdE63f6D`

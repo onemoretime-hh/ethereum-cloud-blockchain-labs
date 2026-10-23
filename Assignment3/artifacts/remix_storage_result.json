@@ -1,0 +1,18 @@
+{
+  "environment": "Remix VM browser experiment",
+  "contract": "StorageTest",
+  "compiler": "0.5.1",
+  "optimizer_enabled": false,
+  "payload_bytes": 1024,
+  "array_elements": 32,
+  "operation": "first put after a fresh deployment",
+  "transaction_gas": 758369,
+  "execution_gas": 732557,
+  "intrinsic_gas_difference": 25812,
+  "evidence": "User-supplied screenshot of the Remix terminal receipt",
+  "matches_local_prague_measurement": true,
+  "gas_price_snapshot_gwei": 0.072,
+  "eth_usd_snapshot": 2399.07,
+  "mainnet_equivalent_usd": 0.13099538281176,
+  "gas_and_price_units_are_distinct": true
+}
