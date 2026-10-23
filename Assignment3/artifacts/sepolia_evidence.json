@@ -11,5 +11,11 @@
   "deploymentStatus": "ok",
   "output": "Hello, world!",
   "outputEvidence": "User-supplied Remix read-call screenshot",
-  "source": "https://eth-sepolia.blockscout.com/api/v2/addresses/0xaECc1158aBA5e1A58A7d45D1c34eED30cdE63f6D/transactions"
+  "source": "https://eth-sepolia.blockscout.com/api/v2/addresses/0xaECc1158aBA5e1A58A7d45D1c34eED30cdE63f6D/transactions",
+  "callHash": "0x286eba3d40812c7678b1353755d16fa4558434f7c76688d3bd6ba5642307a99a",
+  "callBlock": 11975685,
+  "callGasUsed": "15416",
+  "callFeeWei": "23124000246656",
+  "callStatus": "ok",
+  "callTimestamp": "2026-10-23T09:11:36.000000Z"
 }

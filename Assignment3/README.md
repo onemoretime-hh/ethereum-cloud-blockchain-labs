@@ -9,7 +9,7 @@ This folder contains the source code and reproducible local experiments accompan
 - `StorageTest.sol`: the supplied storage contract, compiled with Solidity 0.5.1 and optimization disabled.
 - `put_input.json`: the exact 32-element, 1 KiB input for Remix.
 - `HelloWorld.sol`: Hello World, compiled with Solidity 0.8.28, optimizer enabled for 200 runs, Cancun EVM target.
-- `HelloWorldTx.sol`: transaction-only client interface; use Remix At Address with the existing HelloWorld contract.
+- `HelloWorldTx.sol`: transaction-only client interface; use Remix Add Contract with the existing HelloWorld contract.
 - `Dangerous.sol`: the supplied Solidity 0.4.24 vulnerable contract.
 - `ReentrancyAttack.sol`: an attacker for this isolated local lab contract.
 - `SafeVault.sol`: a repair using checks-effects-interactions and a reentrancy lock, also compiled with 0.4.24.
@@ -47,6 +47,16 @@ These are actual **local Py-EVM** results, not Remix screenshots or Sepolia tran
 
 ## Public testnet steps
 
-Use Sepolia in Remix with MetaMask. Deploy `HelloWorld.sol` with the compiler settings above. Record the contract address and deployment transaction hash. To send a transaction to the pure function, compile `HelloWorldTx.sol`, choose that interface in Deploy, and bind it with **At Address** to the existing HelloWorld address. Click its transaction-style `hello` button with zero value and approve the wallet transaction. Do not deploy the interface. The selector remains `0x19ff1d21`; declaring the client interface without `pure` changes the UI behavior, not the deployed code. Some Remix versions reject the low-level interaction route when the ABI lacks a fallback, so the interface route avoids that UI check. Record the transaction hash. To obtain the returned string, use `eth_call`, the original Remix `hello` read button, or Etherscan Read Contract after verification; transaction receipts do not store ordinary return values.
+Use Sepolia in Remix with MetaMask. Deploy `HelloWorld.sol` with the compiler settings above. Record the contract address and deployment transaction hash. To send a transaction to the pure function, compile `HelloWorldTx.sol`, choose that interface in Deploy, and bind it with **Add Contract** (called At Address in older Remix) to the existing HelloWorld address. Click its transaction-style `hello` button with zero value and approve the wallet transaction. Do not deploy the interface. The selector remains `0x19ff1d21`; declaring the client interface without `pure` changes the UI behavior, not the deployed code. Some Remix versions reject the low-level interaction route when the ABI lacks a fallback, so the interface route avoids that UI check. Record the transaction hash. To obtain the returned string, use `eth_call`, the original Remix `hello` read button, or Etherscan Read Contract after verification; transaction receipts do not store ordinary return values.
 
 For the storage exercise, choose compiler 0.5.1 and disable optimization, deploy a fresh `StorageTest`, then paste `put_input.json` into `put`. Record transaction gas and the selected Remix VM version.
+
+## Recorded Sepolia deployment
+
+Contract: `0xaECc1158aBA5e1A58A7d45D1c34eED30cdE63f6D`
+
+- Deployment: https://sepolia.etherscan.io/tx/0x5c6662bcc912b8feb3f31f7974323d0393653313e1ba1160966dc7e8ca65ac67
+- Successful hello transaction: https://sepolia.etherscan.io/tx/0x286eba3d40812c7678b1353755d16fa4558434f7c76688d3bd6ba5642307a99a
+- Decoded read-call result: `Hello, world!`
+
+Public explorer confirmation and measured fees are recorded in `artifacts/sepolia_evidence.json`. Public Sepolia receipts are distinct from the local results in `artifacts/lab_results.json`.
