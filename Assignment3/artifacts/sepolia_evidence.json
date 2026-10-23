@@ -1,0 +1,15 @@
+{
+  "network": "Sepolia",
+  "chainId": 11155111,
+  "wallet": "0xE0eAc682Adc82a990ECb5295E0CCf06e1e420e20",
+  "contractAddress": "0xaECc1158aBA5e1A58A7d45D1c34eED30cdE63f6D",
+  "deploymentHash": "0x5c6662bcc912b8feb3f31f7974323d0393653313e1ba1160966dc7e8ca65ac67",
+  "deploymentBlock": 11975485,
+  "deploymentGasUsed": "521979",
+  "deploymentFeeWei": "782968508351664",
+  "deploymentTimestamp": "2026-10-23T08:31:12.000000Z",
+  "deploymentStatus": "ok",
+  "output": "Hello, world!",
+  "outputEvidence": "User-supplied Remix read-call screenshot",
+  "source": "https://eth-sepolia.blockscout.com/api/v2/addresses/0xaECc1158aBA5e1A58A7d45D1c34eED30cdE63f6D/transactions"
+}
